@@ -69,12 +69,14 @@ td.L{text-align:left}
 a.plink{color:var(--link);text-decoration:none}
 a.plink:hover{text-decoration:underline}
 
-.section-banner{background:var(--black);color:var(--gold);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-radius:4px;border-left:6px solid var(--gold);cursor:pointer;user-select:none}
-.section-banner:hover{background:#3a3830}
+.section-banner{background:var(--black);color:var(--gold);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-radius:4px;border-left:6px solid var(--gold);cursor:default;user-select:none}
+.sub-banner{background:#f0ede3;color:var(--black);padding:7px 14px;display:flex;align-items:center;justify-content:space-between;border-radius:3px;border-left:4px solid var(--gold);cursor:pointer;user-select:none;margin:12px 14px 0}
+.sub-banner:hover{background:#e8e4d8}
+.sub-banner-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--black)}
+.sub-banner-toggle{font-size:14px;font-weight:700;color:var(--black);transition:transform .25s}
+.sub-banner-toggle.collapsed{transform:rotate(-90deg)}
 .section-banner-title{font-size:14px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase}
-.section-banner-toggle{font-size:18px;font-weight:700;color:var(--gold);transition:transform .25s}
-.section-banner-toggle.collapsed{transform:rotate(-90deg)}
-.collapsible-content{overflow:hidden;transition:max-height .35s ease, opacity .25s ease;max-height:4000px;opacity:1}
+.collapsible-content{overflow:hidden;transition:max-height .5s ease, opacity .3s ease;max-height:5000px;opacity:1}
 .collapsible-content.collapsed{max-height:0;opacity:0}
 
 .bottom-bar{background:#f9f9f9;border-top:1px solid var(--border);padding:10px 14px;margin-top:16px;font-size:9.5px;color:#999;font-style:italic;text-align:center}
@@ -87,17 +89,20 @@ a.plink:hover{text-decoration:underline}
   <span>PITTSBURGH PIRATES — INTERNAL / CONFIDENTIAL</span>
 </div>
 
-<!-- SECTION BANNER: ON ROSTER -->
+<!-- MAJOR HEADER: ON ROSTER -->
 <div style="margin:16px 14px 0">
-  <div id="banner-on-roster" class="section-banner" onclick="toggleSection('banner-on-roster','content-on-roster')">
-    <span class="section-banner-title">Notable 40-Man Considerations</span>
-    <span style="font-size:10px;font-weight:400;letter-spacing:.5px;opacity:.75;font-style:italic">click to collapse / expand &nbsp;</span><span class="section-banner-toggle">▼</span>
+  <div class="section-banner">
+    <span class="section-banner-title">⬡ Notable 40-Man Considerations</span>
   </div>
 </div>
-<div id="content-on-roster" class="collapsible-content">
-<!-- PAYROLL OUTLOOK -->
+
+<!-- SUB: PAYROLL -->
+<div class="sub-banner" onclick="toggleSub('content-payroll','toggle-payroll')">
+  <span class="sub-banner-title">3-Year Payroll Outlook</span>
+  <span><span style="font-size:10px;font-weight:400;opacity:.6;font-style:italic">click to expand &nbsp;</span><span id="toggle-payroll" class="sub-banner-toggle collapsed">▼</span></span>
+</div>
+<div id="content-payroll" class="collapsible-content collapsed">
 <div class="section">
-  <div class="sec-head"><h2>3-Year Payroll Outlook</h2></div>
   <div class="tbl-wrap"><table>
     <thead><tr>
       <th class="L" style="min-width:140px"></th>
@@ -116,10 +121,15 @@ a.plink:hover{text-decoration:underline}
   </table></div>
   <div class="footnote"><span class="fn-text">Figures represent projected payrolls and are subject to change based on roster decisions, transactions, and contract developments.</span></div>
 </div>
+</div>
 
-<!-- ARB CLASS -->
+<!-- SUB: ARB CLASS -->
+<div class="sub-banner" onclick="toggleSub('content-arb','toggle-arb')">
+  <span class="sub-banner-title">2027 Arbitration Class</span>
+  <span><span style="font-size:10px;font-weight:400;opacity:.6;font-style:italic">click to expand &nbsp;</span><span id="toggle-arb" class="sub-banner-toggle collapsed">▼</span></span>
+</div>
+<div id="content-arb" class="collapsible-content collapsed">
 <div class="section">
-  <div class="sec-head"><h2>2027 Arbitration Class</h2></div>
   <div class="tbl-wrap"><table>
     <thead><tr>
       <th class="L" style="min-width:150px">Name</th>
@@ -140,10 +150,15 @@ a.plink:hover{text-decoration:underline}
     <span class="fn-text">= NT candidate &nbsp;|&nbsp; BBO Arb Projections (May 16) &nbsp;|&nbsp; S2 Cutoff: 2.130 &nbsp;|&nbsp; Total class raise: $21.64M</span>
   </div>
 </div>
+</div>
 
-<!-- NON-TENDER -->
+<!-- SUB: NON-TENDER -->
+<div class="sub-banner" onclick="toggleSub('content-nt','toggle-nt')">
+  <span class="sub-banner-title">Non-Tender Candidates</span>
+  <span><span style="font-size:10px;font-weight:400;opacity:.6;font-style:italic">click to expand &nbsp;</span><span id="toggle-nt" class="sub-banner-toggle collapsed">▼</span></span>
+</div>
+<div id="content-nt" class="collapsible-content collapsed">
 <div class="section">
-  <div class="sec-head"><h2>Non-Tender Candidates</h2></div>
   <div class="tbl-wrap"><table>
     <thead><tr>
       <th class="L">Tier</th><th class="L" style="min-width:130px">Name</th>
@@ -156,8 +171,14 @@ a.plink:hover{text-decoration:underline}
     <span class="tier-badge t2">Tier 2</span><span class="fn-text">Worth monitoring</span>
   </div>
 </div>
+</div>
 
-<!-- OOO -->
+<!-- SUB: OPTIONS OUTLOOK -->
+<div class="sub-banner" onclick="toggleSub('content-ooo','toggle-ooo')">
+  <span class="sub-banner-title">Options Outlook</span>
+  <span><span style="font-size:10px;font-weight:400;opacity:.6;font-style:italic">click to expand &nbsp;</span><span id="toggle-ooo" class="sub-banner-toggle collapsed">▼</span></span>
+</div>
+<div id="content-ooo" class="collapsible-content collapsed">
 <div class="two-col-eq">
   <div class="ooo-left">
     <div class="sub">
@@ -178,10 +199,15 @@ a.plink:hover{text-decoration:underline}
     </div>
   </div>
 </div>
+</div>
 
-<!-- MLFA -->
+<!-- SUB: MLFA OUTLOOK -->
+<div class="sub-banner" onclick="toggleSub('content-mlfa','toggle-mlfa')">
+  <span class="sub-banner-title">MLFA Outlook</span>
+  <span><span style="font-size:10px;font-weight:400;opacity:.6;font-style:italic">click to expand &nbsp;</span><span id="toggle-mlfa" class="sub-banner-toggle collapsed">▼</span></span>
+</div>
+<div id="content-mlfa" class="collapsible-content collapsed">
 <div class="section">
-  <div class="sec-head"><h2>MLFA Outlook</h2></div>
   <div class="tbl-wrap"><table style="table-layout:fixed;width:100%">
     <thead><tr>
       <th class="L" style="width:160px">Name</th>
@@ -198,18 +224,21 @@ a.plink:hover{text-decoration:underline}
     <span class="fn-text">= Guaranteed salary &nbsp;|&nbsp; Sorted by FA year within each group &nbsp;|&nbsp; <b>Bold name</b> = Unable to be optioned</span>
   </div>
 </div>
-
-
 </div>
-<!-- SECTION DIVIDER: OFF ROSTER -->
+
+<!-- MAJOR HEADER: OFF ROSTER -->
 <div style="margin:24px 14px 0">
-  <div id="banner-off-roster" class="section-banner" onclick="toggleSection('banner-off-roster','content-off-roster')">
-    <span class="section-banner-title">Notable Off-Roster Considerations</span>
-    <span style="font-size:10px;font-weight:400;letter-spacing:.5px;opacity:.75;font-style:italic">click to collapse / expand &nbsp;</span><span class="section-banner-toggle">▼</span>
+  <div class="section-banner">
+    <span class="section-banner-title">⬡ Notable Off-Roster Considerations</span>
   </div>
 </div>
-<div id="content-off-roster" class="collapsible-content">
-<!-- R5 + MNFA -->
+
+<!-- SUB: R5 & MNFA -->
+<div class="sub-banner" onclick="toggleSub('content-r5mnfa','toggle-r5mnfa')">
+  <span class="sub-banner-title">R5 &amp; MNFA Eligibles</span>
+  <span><span style="font-size:10px;font-weight:400;opacity:.6;font-style:italic">click to expand &nbsp;</span><span id="toggle-r5mnfa" class="sub-banner-toggle collapsed">▼</span></span>
+</div>
+<div id="content-r5mnfa" class="collapsible-content collapsed">
 <div class="three-col">
   <div class="sub">
     <div class="sub-head"><h2>2026 R5 Eligibles</h2></div>
@@ -225,11 +254,15 @@ a.plink:hover{text-decoration:underline}
   </div>
 </div>
 <div class="footnote"><span class="fn-text">R5 Tier 1 = Likely protect (<b>Bold</b>) &nbsp;|&nbsp; Tier 2 = Borderline &nbsp;|&nbsp; Tier 3 = Monitor &nbsp;|&nbsp; <b>Bold</b> (MNFA) = higher priority &nbsp;|&nbsp; R5 Eligibles who are also MNFA-eligible are listed in MNFA only</span></div>
+</div>
 
-
-<!-- RELEASE & ASSIGNMENT CLAUSES -->
+<!-- SUB: RELEASE & ASSIGNMENT CLAUSES -->
+<div class="sub-banner" onclick="toggleSub('content-clauses','toggle-clauses')">
+  <span class="sub-banner-title">2026 Release &amp; Assignment Clauses</span>
+  <span><span style="font-size:10px;font-weight:400;opacity:.6;font-style:italic">click to expand &nbsp;</span><span id="toggle-clauses" class="sub-banner-toggle collapsed">▼</span></span>
+</div>
+<div id="content-clauses" class="collapsible-content collapsed">
 <div class="section" style="margin-bottom:16px">
-  <div class="sec-head"><h2>2026 Release &amp; Assignment Clauses</h2></div>
   <div class="tbl-wrap"><table id="clauses-table">
     <thead>
       <tr>
@@ -261,6 +294,7 @@ a.plink:hover{text-decoration:underline}
   </div>
 </div>
 </div>
+
 <div class="bottom-bar">Pittsburgh Pirates Baseball Operations — Internal / Confidential — 2027 Roster Outlook</div>
 </div>
 
@@ -510,12 +544,15 @@ buildClauses();
 </script>
 
 <script>
-function toggleSection(bannerId, contentId) {
-  const toggle = document.getElementById(bannerId).querySelector('.section-banner-toggle');
+function toggleSub(contentId, toggleId) {
   const content = document.getElementById(contentId);
+  const toggle = document.getElementById(toggleId);
   const isCollapsed = content.classList.contains('collapsed');
   content.classList.toggle('collapsed', !isCollapsed);
   toggle.classList.toggle('collapsed', !isCollapsed);
+  // Update hint text
+  const hint = toggle.previousElementSibling;
+  if(hint) hint.textContent = isCollapsed ? 'click to collapse  ' : 'click to expand  ';
 }
 </script>
 </body>
